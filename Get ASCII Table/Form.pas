@@ -26,7 +26,7 @@ implementation
 procedure TMainForm.FormCreate(Sender: TObject);
 var Cnt: Integer;
 begin
-ShowMessage('!');
+ShowMessage('!!!');
 {RichEdit.Clear;  //вариант с вертикальной удобочитаемостью
 for Cnt:=1 to 255 do begin
   if (Cnt-1) mod 10 = 0 then
