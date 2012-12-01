@@ -1,0 +1,58 @@
+unit Form;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, ComCtrls, Own;
+
+type
+  TMainForm = class(TForm)
+    RichEdit: TRichEdit;
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  MainForm: TMainForm;
+
+implementation
+
+{$R *.dfm}
+
+procedure TMainForm.FormCreate(Sender: TObject);
+var Cnt: Integer;
+begin
+{RichEdit.Clear;  //вариант с вертикальной удобочитаемостью
+for Cnt:=1 to 255 do begin
+  if (Cnt-1) mod 10 = 0 then
+    RichEdit.Lines.Add(WideIntegerLengthWithNulls(Cnt, 3)+'('+IntToHex(Cnt, 2)+')='+Chr(Cnt)+' ')
+  else RichEdit.Lines[RichEdit.Lines.Count-1]:=RichEdit.Lines[RichEdit.Lines.Count-1]+WideIntegerLengthWithNulls(Cnt, 3)+'('+IntToHex(Cnt, 2)+')='+Chr(Cnt)+' ';
+  if Cnt mod 10 = 0 then
+    RichEdit.Lines[RichEdit.Lines.Count-1]:=Copy(RichEdit.Lines[RichEdit.Lines.Count-1], 1, Length(RichEdit.Lines[RichEdit.Lines.Count-1])-1);
+  end;}
+for Cnt:=1 to 255 do begin
+  if (Cnt-1) mod 15 = 0 then begin
+    RichEdit.Lines.Add(Chr(Cnt)+'  '+#9);
+    RichEdit.Lines.Add(WideIntegerLengthWithNulls(Cnt, 3)+#9);
+    RichEdit.Lines.Add('x'+IntToHex(Cnt, 2)+#9);
+    RichEdit.Lines.Add('');
+    end
+  else begin
+    RichEdit.Lines[RichEdit.Lines.Count-4]:=RichEdit.Lines[RichEdit.Lines.Count-4]+Chr(Cnt)+'  '+#9;
+    RichEdit.Lines[RichEdit.Lines.Count-3]:=RichEdit.Lines[RichEdit.Lines.Count-3]+WideIntegerLengthWithNulls(Cnt, 3)+#9;
+    RichEdit.Lines[RichEdit.Lines.Count-2]:=RichEdit.Lines[RichEdit.Lines.Count-2]+'x'+IntToHex(Cnt, 2)+#9;
+    end;
+{  if Cnt mod 10 = 0 then begin
+    RichEdit.Lines[RichEdit.Lines.Count-1]:=Copy(RichEdit.Lines[RichEdit.Lines.Count-1], 1, Length(RichEdit.Lines[RichEdit.Lines.Count-1])-1);
+    RichEdit.Lines[RichEdit.Lines.Count-1]:=Copy(RichEdit.Lines[RichEdit.Lines.Count-1], 1, Length(RichEdit.Lines[RichEdit.Lines.Count-1])-1);
+    RichEdit.Lines[RichEdit.Lines.Count-1]:=Copy(RichEdit.Lines[RichEdit.Lines.Count-1], 1, Length(RichEdit.Lines[RichEdit.Lines.Count-1])-1);
+    end;}
+  end;
+
+end;
+
+end.
