@@ -1,0 +1,17 @@
+program test1;
+given dxdt
+dxdt(1)=x(1)-5*x(2);
+dxdt(2)=2*x(1)-x(2);
+koef
+>a;
+cauchy
+tspan=[0,1];
+h=0.1;
+x0=[0.5;-0.5]
+method
+>ode45;
+>euler;
+get
+>plot [x(1), x(2)];;
+end.
+

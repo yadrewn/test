@@ -1,0 +1,23 @@
+program NEW5;
+given dxdt
+>dxdt(1)=16*x(2);
+>dxdt(2)=256*a*(1/16-x(1)^2)*x(2)-1/16*x(1);
+koef
+>a=0.9;
+cauchy                 
+>tspan=[0,0.99];
+>h=0.0039;
+>x0=[0.5;-0.5];
+method
+>ode45;
+>euler;
+get
+>plot [x(1), x(2)];
+end.
+
+
+
+
+
+
+
